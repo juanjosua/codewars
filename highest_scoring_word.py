@@ -19,22 +19,18 @@ def high(sentence):
     for word in words:
         weight[word] = 0
         for char in word.lower():
-            weight[word] += ord(char)
-            print([char, ord(char)])
+            weight[word] += (ord(char) - 96)
 
     winner = max(weight, key=weight.get)
-    # print(weight)
-    # print(winner)
+    print(winner)
     return winner
 
 
 # Voted as best practice
-def sort_array2(arr):
-    odds = sorted((x for x in arr if x % 2 != 0), reverse=True)
-    return [x if x % 2 == 0 else odds.pop() for x in arr]
+def high2(x):
+    return max(x.split(), key=lambda k: sum(ord(c) - 96 for c in k))
 
 
-high('abcdefghijklmnopqrstuvwxyz')  # ubud
-# high('man i need a taxi up to ubud')  # ubud
-# high('what time are we climbing up the volcano')  # volcano
-# high('take me to semynak')  # semynyak
+high('man i need a taxi up to ubud')  # ubud
+high('what time are we climbing up the volcano')  # volcano
+high('take me to semynak')  # semynyak
